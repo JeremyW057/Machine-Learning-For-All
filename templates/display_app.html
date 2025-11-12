@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+</body>
+</head>    
+<body>
+    <div id="info">
+        <div id="model_plot">
+            <img id="trainVtest" src="{{url_for('static', filename='model_tests.png')}}" alt="trainVtest">
+        </div>
+        <div id="model_info">
+            <strong>Model Info:</strong>
+            <ul>
+                <li><strong>Coefficients:</strong> {{ tup[0] }}</li>
+                <li><strong>Intercepts:</strong> {{ tup[1] }}</li>
+                <li><strong>Model Score:</strong> {{ tup[2] }}%</li>
+            </ul>
+        </div>
+        <!-- Conditional to display info for multi-iv plot -->
+        {% if num_iv > 1 %}
+        <div id="multi_iv_explanation">
+            <strong>Plot Explanation (Multiple IVs):</strong>
+            <ul>
+                <li><strong>X-axis:</strong> Actual value of the dependent variable.</li>
+                <li><strong>Y-axis:</strong> Predicted value from the model.</li>
+                <li><strong>Red dashed line:</strong> Perfect predictions, if dot is on the line then it was predicted perfectly.</li>
+                <li><strong>Distance from red line:</strong> Deviation, the farther a point from the line, the less accurate the prediction.</li>
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+    <div id="download">
+        <a href="{{url_for('static', filename='model_pickle')}}" download="model_pickle"> Download </a> <!-- Download button -->
+    </div>
+    <div id="Nav">
+        <a href="{{ url_for('index') }}">Home</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<html>
+<head>
+</head>
+<body>
+    <div id ="main_container" name="main_container">
+        <div id = "form_container">
+            <div id ="choose_csv">
+                <form id="csv_input" method='post' action='/sub' enctype='multipart/form-data'>
+                    <label for="df.csv">Select a csv file:</label>
+                    <input type="file" id="df_csv" name="df_csv" accept=".csv"> 
+                    <label for="iv"><strong> IV </strong></label>
+                    <select name="iv" id="iv" required multiple>
+                    </select>
+                    <label for="dv"><strong> DV </strong></label>
+                    <select name="dv" id="dv" required>
+                    </select>
+                    <br><br>
+                    <input type="submit" value="Submit" id="submit_for_training" onclick="push_info();deliver()">
+                </form>
+            </div>
+            <div id="Explanations">
+                <ul>
+                    <li> <strong>IV:</strong> Variable(s) that infulence your DV(usually the price or whatever you're trying to estimate.) </li>
+                    <ul>
+                        <li> Shift + R-click to select multiple IVs </li>
+                    </ul>
+                    <li> <strong>DV:</strong> Variable you are trying to predict.</li>
+                </ul>
+            </div>
+        </div>
+        <div id="info_container" style="display: none">
+            <p>Loading</p>
+        </div>
+    </div>
+    <script src = "{{url_for('static', filename='main.js')}}"></script>
+</body>
+</html>
